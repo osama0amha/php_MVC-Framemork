@@ -1,0 +1,14 @@
+{
+    "name": "osama/mvc_php_framework",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "osama amha"
+        }
+    ],
+    "require": {}
+}
