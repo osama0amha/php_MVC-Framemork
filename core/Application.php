@@ -9,9 +9,9 @@ class Application
     public Response  $response;
     public static string $DirRoute;
     public static Application $app;
+
     public function __construct($DIR)
     {
-
         self::$DirRoute = $DIR;
         self::$app = $this;
         $this->response = new Response();

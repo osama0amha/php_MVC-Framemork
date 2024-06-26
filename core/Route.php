@@ -19,6 +19,10 @@ class Route
     {
           $this->path['get'][$url] = $content;
     }
+    public function post(string $url, $content)
+    {
+        $this->path['post'][$url] = $content;
+    }
     public function resolve()
     {
         $getMethod = $this->request->getMethod();
@@ -38,14 +42,14 @@ class Route
       if(is_array($content)){
           $content[0] = new $content[0]();
       }
-      return call_user_func($content);
+      return call_user_func($content,$this->request);
 
     }
 
-    public function MainView($view)
+    public function MainView($view, $params=[])
     {
         $layoutView = $this->LayoutView();
-        $viewContent = $this->ViewContent($view);
+        $viewContent = $this->ViewContent($view,$params);
         return str_replace('{{content}}',$viewContent,$layoutView);
 
     }
@@ -55,8 +59,11 @@ class Route
          include_once Application::$DirRoute ."/View/Layout/main.php";
          return ob_get_clean();
     }
-    public function ViewContent($view)
+    public function ViewContent($view,array $params)
     {
+        foreach ( $params as $key => $value){
+              $$key = $value;
+        };
         ob_start();
         include_once Application::$DirRoute ."/View/$view.php";
         return ob_get_clean();
