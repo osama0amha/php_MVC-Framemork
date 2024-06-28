@@ -15,10 +15,10 @@ class RegisterModel extends Model
     public function rul(): array
     {
         return [
-            $this->name => [self::RULE_REQUIRED],
-            $this->email => [self::RULE_REQUIRED,self::RULE_EMAIL],
-            $this->password => [self::RULE_REQUIRED,[self::RULE_MIN , 'min'=>8],[self::RULE_MAX,'max'=>250]],
-            $this->confirmPassword => [self::RULE_REQUIRED,[self::RULE_MATCH,'match'=>'password']],
+            'name' => [self::RULE_REQUIRED],
+            'email' => [self::RULE_REQUIRED,self::RULE_EMAIL],
+            'password'=> [self::RULE_REQUIRED,[self::RULE_MIN , 'min'=>8],[self::RULE_MAX,'max'=>10]],
+            'confirmPassword'=> [self::RULE_REQUIRED,[self::RULE_MATCH,'match'=>'password']],
         ];
     }
 }

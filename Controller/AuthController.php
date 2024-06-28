@@ -19,7 +19,7 @@ class AuthController extends Controller
             $registerModel = new RegisterModel();
             $registerModel->lodData($request->getBody());
 
-
+           $registerModel->validate();
 
         }
 

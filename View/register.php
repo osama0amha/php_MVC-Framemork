@@ -3,7 +3,10 @@
     <form action="" method="post">
         <div class="form-group">
             <label for="exampleInputEmail1">Name</label>
-            <input type="text" class="form-control" name="name" id="exampleInputEmail1"  placeholder="Enter Name">
+            <input type="text" class="form-control  is-invalid " name="name" id="exampleInputEmail1"  placeholder="Enter Name">
+            <div class="invalid-feedback">
+
+            </div>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
