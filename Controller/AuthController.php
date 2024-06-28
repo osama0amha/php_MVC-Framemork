@@ -14,16 +14,19 @@ class AuthController extends Controller
     }
     public  function  register(Request $request)
     {
+        $registerModel = new RegisterModel();
         if($request->isPost()){
 
-            $registerModel = new RegisterModel();
-            $registerModel->lodData($request->getBody());
 
+            $registerModel->lodData($request->getBody());
            $registerModel->validate();
 
-        }
 
-        return $this->render('register');
+            return $this->render('register',['Model'=> $registerModel]);
+        }
+        return $this->render('register',['Model'=> $registerModel]);
+
+
     }
 
 }

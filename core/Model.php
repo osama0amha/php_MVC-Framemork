@@ -75,4 +75,16 @@ abstract class Model
        ];
 
    }
+
+   public function hasError($firsName):bool
+   {
+       if(!empty($this->errors[$firsName]))return true;
+
+       return false;
+   }
+
+   public function firstError($firsName):string
+   {
+       return $this->errors[$firsName][0];
+   }
 }
