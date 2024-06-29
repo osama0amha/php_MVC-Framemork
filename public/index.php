@@ -1,10 +1,20 @@
 <?php
 
+use app\core\Application;
 require_once dirname(__DIR__).'/vendor/autoload.php';
 
-use app\core\Application;
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
 
-$app = new Application(dirname(__DIR__));
+$EnvData = [
+    'dp'=> [
+        'hsd'=>$_ENV['DP_HSD'],
+        'username'=>$_ENV['DP_USERNAME'],
+        'password'=>$_ENV['DP_PASSWORD']
+    ],
+];
+
+$app = new Application(dirname(__DIR__),$EnvData);
 
 $app->route->get('/content',[\app\Controller\ContentController::class,'content']);
 $app->route->get('/login',[\app\Controller\AuthController::class , 'login']);
