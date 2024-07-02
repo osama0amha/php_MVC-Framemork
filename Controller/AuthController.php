@@ -4,7 +4,7 @@ namespace app\Controller;
 
 use app\core\Controller;
 use app\core\Request;
-use app\Model\RegisterModel;
+use app\Model\User;
 
 class AuthController extends Controller
 {
@@ -14,17 +14,18 @@ class AuthController extends Controller
     }
     public  function  register(Request $request)
     {
-        $registerModel = new RegisterModel();
+        $user = new User();
         if($request->isPost()){
 
+            $user->lodData($request->getBody());
 
-            $registerModel->lodData($request->getBody());
-           $registerModel->validate();
+            if($user->validate()&& $user->Save()){
+                echo 'secss';
+            }
 
-
-            return $this->render('register',['Model'=> $registerModel]);
+            return $this->render('register',['Model'=> $user]);
         }
-        return $this->render('register',['Model'=> $registerModel]);
+        return $this->render('register',['Model'=> $user]);
 
 
     }

@@ -10,6 +10,8 @@ abstract class Model
     public const RULE_MIN = 'min';
     public const RULE_MAX = 'max';
     public const RULE_MATCH = 'match';
+    public const RULE_UNIQUE = 'unique';
+
     public array $errors = [];
 
    public function lodData($arrPost=[]):void
@@ -23,7 +25,8 @@ abstract class Model
    }
    abstract public function rul():array;
 
-   public function validate(){
+   public function validate():bool
+   {
 
        foreach ($this->rul() as $key => $value){
          $firstname = $key;
@@ -50,8 +53,26 @@ abstract class Model
              if($rulName == self::RULE_EMAIL && !filter_var($this->{$firstname},FILTER_VALIDATE_EMAIL)){
                  $this->AddError($firstname,$rulName,$rul);
              }
+             if($rulName == self::RULE_UNIQUE){
+                 $className = $rul['table'];
+                 $className = new $className();
+                 $table  = $className::TableName();
+                 $where = $this->{$firstname};
+                 $result = self::find("SELECT $firstname FROM $table WHERE $firstname = '$where' ");
+
+                 var_dump($result);
+                 exit;
+
+
+             }
+
          }
        }
+       if(!empty($this->errors))
+       {
+           return false;
+       }
+       return true;
 
    }
 
@@ -87,4 +108,11 @@ abstract class Model
    {
        return $this->errors[$firsName][0];
    }
+
+    public static function find($sql)
+    {
+       $result = Application::$app->dp->pdo->prepare($sql);
+       $result->execute();
+       return $result->fetchColumn();
+    }
 }

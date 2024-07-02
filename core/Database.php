@@ -7,7 +7,7 @@ class Database
 {
 
     public \PDO $pdo;
-    public array $ArrMigration;
+    public array $ArrMigration=[];
 
     public function __construct($EnvData=[])
     {
@@ -37,18 +37,27 @@ class Database
 
              $ClassName =  pathinfo($migration,PATHINFO_FILENAME);
              $ClassName = new $ClassName();
-             $ClassName->up();
+             echo 'Table '.$migration.'_'.date("d/m/y H:i").' Crate-Sacsse'. PHP_EOL;
+             $ClassName->up($this->pdo);
              $this->ArrMigration[]=$migration;
          }
-        $this->saveMigration($this->ArrMigration);
+         if(!empty($this->ArrMigration)){
+             $this->saveMigration($this->ArrMigration);
+         }else{
+             echo 'no tabel to create';
+         }
+
+
+
     }
 
    public function CrateMigrationTable():void
     {
       $this->pdo->exec("CREATE TABLE IF NOT EXISTS migrations(  
-          id int(11),
+          id int(11) NOT NULL AUTO_INCREMENT,
           migration varchar(255),
-          create_at date
+          create_at DATE NULL DEFAULT CURRENT_TIMESTAMP,
+          PRIMARY KEY (id)
          )");
 
     }
@@ -63,7 +72,6 @@ class Database
     {
         $str = implode(',',array_map(fn($e) =>"('$e')",$Emigration));
 
-        var_dump($str);
         $this->pdo->exec("INSERT INTO `migrations` (`migration`) VALUES $str");
 
     }
