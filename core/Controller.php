@@ -10,6 +10,11 @@ class Controller
         return Application::$app->route->MainView($path,$params);
     }
 
+    public function redirect(string $str)
+    {
+        header("location:$str");
+    }
+
     public function isGet():bool
     {
         return Application::$app->request->isGET();

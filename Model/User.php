@@ -30,6 +30,12 @@ class User extends DbModel
 
     public function Attribute():array
     {
+        $this->password = password_hash($this->password,PASSWORD_DEFAULT);
         return ['name','email','password'];
+    }
+
+    public static function Unique():string
+    {
+        return 'id';
     }
 }

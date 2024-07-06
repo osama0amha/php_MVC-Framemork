@@ -21,10 +21,34 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
         </ul>
     </div>
+        <?php if(\app\core\Application::$app->IsFound()){ ?>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                       <span class="nav-link"> Hello <?php echo ' '.\app\core\Application::$app->user->name ?></span>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        <?php }
+        else{?>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/register">Register <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+        <?php }?>
    </div>
 </nav>
 
