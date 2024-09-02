@@ -2,8 +2,8 @@
 
 namespace app\Model;
 
-use app\core\Application;
-use app\core\Model;
+use Os\MvcFramework\Application;
+use Os\MvcFramework\Model;
 
 class LoginModel extends Model
 {

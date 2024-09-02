@@ -1,14 +1,15 @@
-<?php /** @var  $Model */?>
+<?php $this->title("login");
+/** @var  $Model */?>
 
 <div class="container mt-5">
 
-    <?php $form = \app\core\Forms\Form::begin("",'post') ;?>
+    <?php $form = \Os\MvcFramework\Forms\Form::begin("",'post') ;?>
 
     <?php echo $form->field($Model,'email')?>
     <?php echo $form->field($Model,'password')->password()?>
 
     <button type="submit" class="btn btn-primary">Submit</button>
 
-    <?php \app\core\Forms\Form::end(); ?>
+    <?php \Os\MvcFramework\Forms\Form::end(); ?>
 
 </div>

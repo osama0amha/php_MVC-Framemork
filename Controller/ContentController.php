@@ -2,8 +2,8 @@
 
 namespace app\Controller;
 
-use app\core\Application;
-use app\core\Controller;
+use Os\MvcFramework\Application;
+use Os\MvcFramework\Controller;
 
 class ContentController extends Controller
 {

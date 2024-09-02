@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ad27988bffbc8aacbfacaaa89c1e524",
+    "content-hash": "584d6ba72836725c647a285fe601a722",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -67,6 +67,33 @@
                 }
             ],
             "time": "2023-11-12T22:16:48+00:00"
+        },
+        {
+            "name": "oa/mvc_framework",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/osama0amha/Oa_MvcFramework.git",
+                "reference": "b1bbddef841fdbe9f708c559fb7bf67ef5c80b66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/osama0amha/Oa_MvcFramework/zipball/b1bbddef841fdbe9f708c559fb7bf67ef5c80b66",
+                "reference": "b1bbddef841fdbe9f708c559fb7bf67ef5c80b66",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Os\\MvcFramework\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "support": {
+                "issues": "https://github.com/osama0amha/Oa_MvcFramework/issues",
+                "source": "https://github.com/osama0amha/Oa_MvcFramework/tree/1.2.0"
+            },
+            "time": "2024-09-01T15:39:31+00:00"
         },
         {
             "name": "phpoption/phpoption",

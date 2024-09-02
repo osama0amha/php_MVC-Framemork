@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+<!--    <title>--><?php //echo $this->title; ?><!--</title>-->
 </head>
 <body>
 <nav class="  navbar navbar-expand-lg navbar-light bg-light">
@@ -25,14 +25,17 @@
             </li>
         </ul>
     </div>
-        <?php if(\app\core\Application::$app->IsFound()){ ?>
+        <?php if(\Os\MvcFramework\Application::$app->IsFound()){ ?>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                       <span class="nav-link"> Hello <?php echo ' '.\app\core\Application::$app->user->name ?></span>
+                       <span class="nav-link"> Hello <?php echo ' '.\Os\MvcFramework\Application::$app->user->name ?></span>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/profile">Profile <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
             </div>

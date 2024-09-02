@@ -2,8 +2,8 @@
 
 namespace app\Model;
 
-use app\core\DbModel;
-use app\core\Model;
+use Os\MvcFramework\DbModel;
+use Os\MvcFramework\Model;
 
 class User extends DbModel
 {

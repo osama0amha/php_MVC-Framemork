@@ -6,7 +6,7 @@ class m0002_someting
 {
     public function up():void
     {
-       \app\core\Application::$app->dp->pdo->exec("CREATE TABLE users(  
+       \Os\MvcFramework\Application::$app->dp->pdo->exec("CREATE TABLE users(  
           id int(11) NOT NULL AUTO_INCREMENT,
           name varchar(255),
           email varchar(255),

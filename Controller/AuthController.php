@@ -2,14 +2,21 @@
 
 namespace app\Controller;
 
-use app\core\Application;
-use app\core\Controller;
-use app\core\Request;
+use Os\MvcFramework\Application;
+use Os\MvcFramework\Controller;
+use Os\MvcFramework\middleware\AuthMiddleware;
+use Os\MvcFramework\Request;
 use app\Model\LoginModel;
 use app\Model\User;
 
 class AuthController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->registerMiddleware(['profile']);
+    }
+
     public function login(Request $request)
     {
         $loginModel = new LoginModel();
@@ -19,6 +26,8 @@ class AuthController extends Controller
                 $this->redirect('/');
             }
         }
+
+
         return $this->render('login',['Model' => $loginModel]);
     }
     public  function  register(Request $request)
@@ -36,6 +45,11 @@ class AuthController extends Controller
             return $this->render('register',['Model'=> $user]);
         }
         return $this->render('register',['Model'=> $user]);
+    }
+
+    public function profile()
+    {
+          echo 'profile';
     }
 
     public function logout()

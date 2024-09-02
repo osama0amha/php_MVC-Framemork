@@ -1,10 +1,10 @@
-<?php ?>
+<?php  $this->title("home")?>
 
 <div class="container mt-4">
 
-    <?php if (\app\core\Application::$app->session->getSession('secss')): ?>
+    <?php if (\Os\MvcFramework\Application::$app->session->getSession('secss')): ?>
            <div class="alert alert-success" role="alert">
-               <?php echo \app\core\Application::$app->session->getSession('secss')?>
+               <?php echo \Os\MvcFramework\Application::$app->session->getSession('secss')?>
            </div>
     <?php endif; ?>
 

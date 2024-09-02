@@ -1,6 +1,6 @@
 <?php
 
-use app\core\Application;
+use Os\MvcFramework\Application;
 require_once dirname(__DIR__).'/vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -23,6 +23,8 @@ $app->route->post('/login',[\app\Controller\AuthController::class , 'login']);
 $app->route->get('/register',[\app\Controller\AuthController::class , 'register']);
 $app->route->post('/register',[\app\Controller\AuthController::class , 'register']);
 $app->route->get('/logout',[\app\Controller\AuthController::class , 'logout']);
+$app->route->get('/profile',[\app\Controller\AuthController::class , 'profile']);
+
 
 $app->route->get('/','home');
 
